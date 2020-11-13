@@ -6,7 +6,22 @@ React & JSX 编码规范及 Git 提交规范
 
 ## 基本规范
 
-## Class vs React.createClass vs stateless
+- 1.[ClassvsReact.createClassvsstateless](#创建模块)
+- 2.[MMixins](#MMixins)
+- 3.[命名](#命名)
+- 4.[声明模块](#声明模块)
+- 5.[代码对齐](#代码对齐)
+- 6.[单引号还是双引号](#单引号还是双引号)
+- 7.[空格](#空格)
+- 8.[属性](#属性)
+- 9.[Refs 引用](#Refs引用)
+- [括号](#括号)
+- [标签](#标签)
+- [函数/方法](#函数/方法)
+- [模块生命周期](#模块生命周期)
+- [isMounted](#isMounted)
+
+## 创建模块
 
 ## MMixins
 
@@ -33,7 +48,3 @@ React & JSX 编码规范及 Git 提交规范
 ## 模块生命周期
 
 ## isMounted
-
-# Basic Rules 基本规范
-
-### 每个文件只写一个模块
