@@ -15,3 +15,13 @@ p1.then(function (val) {
 }).then(function (val) {
   console.log(val);
 });
+this.then = function (onFulfilled, onRejected) {
+  return new Promise(function (resolve, reject) {
+    handle({
+      onFulfilled: onFulfilled,
+      onRejected: onRejected,
+      resolve: resolve,
+      reject: reject,
+    });
+  });
+};
