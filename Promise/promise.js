@@ -38,20 +38,30 @@ class Promise {
     }
   }
   then(onFulfilled, onRejected) {
-    if (this.state === "fulfilled") {
-      onFulfilled(this.value);
-    }
-    if (this.state === "rejected") {
-      onRejected(this.reason);
-    }
-    // 当状态state为pending时
-    if (this.state === "pending") {
-      // onFulfilled 传入到成功数组
-      this.onResolvedCallbacks.push(() => {
-        onFulfilled(this.value);
-      });
-      // onRejected 传入到失败数组
-      this.onRejected(this.reason);
-    }
+    // 声明返回的promise2
+    let promise2 = new Promise((resolve, reject) => {
+      if (this.state === "fulfilled") {
+        let x = onFulfilled(this.value);
+        // resolvePromise 函数，处理自己return的promise和默认的promise2的关系
+        resolvePromise(promise2, x, resolve, reject);
+      }
+      if (this.state === "rejected") {
+        let x = onRejected(this.reason);
+        resolvePromise(promise2, x, resolve, reject);
+      }
+      // 当状态state为pending时
+      if (this.state === "pending") {
+        // onFulfilled 传入到成功数组
+        this.onResolvedCallbacks.push(() => {
+          let x = onFulfilled(this.value);
+          resolvePromise(promise2, x, resolve, reject);
+        });
+        // onRejected 传入到失败数组
+        this.onRejectedCallbacks.push(() => {
+          let x = onRej;
+        });
+        this.onRejected(this.reason);
+      }
+    });
   }
 }
