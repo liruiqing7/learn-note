@@ -41,16 +41,17 @@ class Promise {
     if (this.state === "fulfilled") {
       onFulfilled(this.value);
     }
+    if (this.state === "rejected") {
+      onRejected(this.reason);
+    }
+    // 当状态state为pending时
+    if (this.state === "pending") {
+      // onFulfilled 传入到成功数组
+      this.onResolvedCallbacks.push(() => {
+        onFulfilled(this.value);
+      });
+      // onRejected 传入到失败数组
+      this.onRejected(this.reason);
+    }
   }
 }
-+---[RSA 2048]----+
-|           + =E=O|
-|          . X .++|
-|           o o..o|
-|            o  +.|
-|        S  *  . .|
-|         .O =    |
-|       o +o& .   |
-|      o + *+B o  |
-|     .o+ ==+.o   |
-+----[SHA256]-----+
