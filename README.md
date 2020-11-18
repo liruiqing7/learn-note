@@ -18,3 +18,9 @@
 > 归纳平时看到的对自己有用的东西
 
 1.[编码及 Git 提交规范](杂谈/React&JSX编码及commit规范.md)
+
+## Promise
+
+> 深入了解Promise
+
+1.[Promise 实例](Promise/promise.js)
