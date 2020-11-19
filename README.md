@@ -11,7 +11,7 @@
 
 ---
 
-## 介绍
+## 目录
 
 ## 杂谈
 
@@ -21,6 +21,7 @@
 
 ## Promise
 
-> 深入了解Promise
+> 深入了解 Promise
 
-1.[Promise 实例](Promise/promise.js)
+1. [Promise 源码解析](Promise/promise.js)
+2. [Promise 实例练习](Promise/example.md)
