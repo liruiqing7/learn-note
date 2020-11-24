@@ -300,3 +300,11 @@ promise.all = function (promises) {
     }
   });
 };
+
+const timer1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("success");
+  }, 0);
+});
+
+console.log("timer1", timer1);
