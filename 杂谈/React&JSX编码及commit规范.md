@@ -308,7 +308,7 @@ SFC.propTypes = {
   children: PropTypes.node,
 };
 
-// good test
+// good test1
 function SFC({ foo, bar, children }) {
   return (
     <div>
