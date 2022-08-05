@@ -1,40 +1,50 @@
-let obj = {
-  age: 18,
-  name: "lee",
-  adress: {
-    city: "北京",
-    country: { a: "中国", b: "中国香港" },
-  },
-  about: {
-    like: "sing",
-  },
-};
-
-const jsonFlatten = (data) => {
-  var result = {};
-  function recurse(cur, prop) {
-    if (Object(cur) !== cur) {
-      result[prop] = cur;
-    } else if (Array.isArray(cur)) {
-      for (var i = 0, l = cur.length; i < l; i++) {
-        recurse(cur[i], prop + "[" + i + "]");
-      }
-      if (l === 0) {
-        result[prop] = [];
-      }
+const newFunc = (arr) => {
+  let _arr = [];
+  for (let i in arr) {
+    if (Array.isArray(arr[i])) {
+      _arr = _arr.concat(newFunc(arr[i]));
     } else {
-      var isEmpty = true;
-      for (var p in cur) {
-        isEmpty = false;
-        recurse(cur[p], prop ? prop + "." + p : p);
-      }
-      if (isEmpty && prop) {
-        result[prop] = {};
-      }
+      _arr.push(arr[i]);
     }
   }
-  recurse(data, "");
+  return _arr;
+};
+
+// console.log(newFunc([1, 2, 3, [1, 2, 3, [4, 3]]]));
+
+const str = { a: "1" };
+
+function Func() {}
+
+Func.prototype.obj = str;
+Func.prototype.arr = [1, 2, 3];
+
+const obj = new Func();
+
+// console.log(Func instanceof Array);
+
+const deepClone = (target) => {
+  let result;
+  if (typeof target === "object") {
+    if (Array.isArray(target)) {
+      result = [];
+      for (let i in target) {
+        console.log(target[i], i, "+++");
+        result.push(deepClone(target[i]));
+      }
+    } else {
+      result = {};
+      for (let i in target) {
+        console.log(target[i], i, "---");
+        result[i] = deepClone(target[i]);
+      }
+    }
+  } else {
+    result = target;
+  }
   return result;
 };
 
-console.log(jsonFlatten(obj));
+// let obj2 = deepClone(obj);
+
+// console.log(obj2);
