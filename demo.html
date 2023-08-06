@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      height: 100000px;
+    }
+  </style>
+</head>
+<body>
+
+</body>
+
+<script>
+
+  const str = { a: "1" };
+
+function Func() {}
+
+Func.prototype.obj = str;
+Func.prototype.arr = [1, 2, 3];
+
+const obj = new Func();
+
+
+const deepClone = (target) => {
+  let result;
+  if(typeof target === 'object'){
+    if(Array.isArray(target)){
+      result = []
+      for (let i in target) {
+        result.push(deepClone(target[i]))
+      }
+    }else {
+      result = {}
+      for (let i in target) {
+        result[i] = deepClone(target[i])
+      }
+    }
+  } else {
+    result = target
+  }
+  return target
+}
+
+
+let obj2 = deepClone(obj);
+
+console.log(obj2);
+
+json.parse(json.stringify(object))
+// undefined、函数、正则以及symbol，在序列化过程中会被忽略 该方法抛弃对象的constructor
+
+
+</script>
+
+</html>
